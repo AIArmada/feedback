@@ -12,10 +12,6 @@ return new class extends Migration
     {
         $tableName = (string) config('feedback.database.tables.form_analytics', 'feedback_form_analytics');
 
-        if (Schema::hasTable($tableName)) {
-            return;
-        }
-
         Schema::create($tableName, function (Blueprint $table): void {
             $table->uuid('id')->primary();
             $table->foreignUuid('feedback_form_id')->unique('feedback_form_analytics_form_unique');
